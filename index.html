@@ -475,25 +475,17 @@ function proximaSecao(){
 
 }
 */
-const secoes = Array.from(
-  { length: 50 },
-  (_, i) => `s${i + 1}`
-);
-
+//botão de sessão
+const secoes = document.querySelectorAll("section[id]");
 let atual = 0;
 
-function proximaSecao(){
+function proximaSecao() {
 
-    atual++;
+  atual = (atual + 1) % secoes.length;
 
-    if(atual >= secoes.length)
-        atual = secoes.length - 1;
-
-    document
-      .getElementById(secoes[atual])
-      .scrollIntoView({
-          behavior:'smooth'
-      });
+  secoes[atual].scrollIntoView({
+    behavior: "smooth"
+  });
 }
 
 // CORAÇÕES
