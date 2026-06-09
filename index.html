@@ -475,13 +475,10 @@ function proximaSecao(){
 
 }
 */
-const secoes = [
-  "s1",
-  "s2",
-  "s3",
-  "s4",
-  "s5"
-];
+const secoes = Array.from(
+  { length: 50 },
+  (_, i) => `s${i + 1}`
+);
 
 let atual = 0;
 
