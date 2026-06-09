@@ -193,7 +193,7 @@ p{
 
 <!-- TELA 1 -->
 
-<section class="section" id="s1">
+<section class="section" id="s10">
 
     <h1>❤️ Kevin & Raquel ❤️</h1>
 
@@ -211,7 +211,7 @@ p{
 
 <!-- TELA 2 -->
 
-<section class="section" id="s2">
+<section class="section" id="s20">
 
     <h2>Quanto tempo estamos juntos?</h2>
 
@@ -227,7 +227,7 @@ p{
 
 <!-- TELA 3 -->
 
-<section class="section" id="s3">
+<section class="section" id="s30">
 
     <h2>Nossa História</h2>
 
@@ -465,7 +465,7 @@ function irPara(id){
     });
 
 }
-
+/*
 function proximaSecao(){
 
     window.scrollBy({
@@ -474,7 +474,30 @@ function proximaSecao(){
     });
 
 }
+*/
+const secoes = [
+  "s1",
+  "s2",
+  "s3",
+  "s4",
+  "s5"
+];
 
+let atual = 0;
+
+function proximaSecao(){
+
+    atual++;
+
+    if(atual >= secoes.length)
+        atual = secoes.length - 1;
+
+    document
+      .getElementById(secoes[atual])
+      .scrollIntoView({
+          behavior:'smooth'
+      });
+}
 // CORAÇÕES
 
 function criarCoracao(){
