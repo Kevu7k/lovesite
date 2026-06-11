@@ -23,6 +23,7 @@ body{
     background:linear-gradient(135deg,#ff9a9e,#fad0c4);
     color:white;
     overflow-x:hidden;
+	overflow: hidden;
 }
 
 /* Seções */
@@ -197,7 +198,7 @@ p{
 </style>
 </head>
 
-<body>
+<body onload="controlarScroll()">
 
 <!-- TELA 1 -->
 
@@ -212,7 +213,7 @@ p{
     </p>
 
     <button class="btn"
-        onclick="irPara('s2')">
+        onclick="irPara(1)">
         Começar ❤️
     </button>
 
@@ -232,7 +233,7 @@ p{
         <p>Dias ao seu lado ❤️</p>
     </div>
     <button class="btn"
-        onclick="irPara('s3')">
+        onclick="irPara(2)">
         Próximo 👇
     </button>
 
@@ -243,6 +244,10 @@ p{
 <section class="section" id="s3">
     <h2>Nossa História</h2>
     <p>Fiz uma pequena linha do tempo nossa com alguns momentos que achei especiais, espero que goste 😁👍</p>
+	 <button class="btn"
+        onclick="irPara(3)">
+        Próximo 👇
+    </button>
 </section>
     <div class="timeline">
     <section id="s4">
@@ -360,7 +365,7 @@ p{
         <div class="evento">
             <h3>✨ Primeiro contato</h3>
             <p>
-                O dia em que nossas histórias se cruzaram.
+                Aquele belíssimo sorvetinho no açai da barra, onde o esquisito conquistou a bonitinha
             </p>
             
         </div>
@@ -368,28 +373,28 @@ p{
         <div class="evento">
             <h3>🥰 Primeiro encontro</h3>
             <p>
-                Aquele frio na barriga inesquecível.
+                Eu considero aquele do pizza hut, foi muito importante logo no começo
             </p>
         </div>
 
         <div class="evento">
             <h3>❤️ Pedido de namoro</h3>
             <p>
-                Quando decidimos caminhar juntos.
+                Quando decidimos caminhar juntos, te pedi na minha casa no dia 19 de abril de 2023, e aquele dia no gamepub te entreguei aquela aliança hihihi
             </p>
         </div>
 
         <div class="evento">
-            <h3>📸 Primeira viagem</h3>
+            <h3>Nossa melhor decisão</h3>
             <p>
-                Memórias que levaremos para sempre.
+                🧹 Em outubro de 2023 começamos nosso maior desafio de morar juntos, e foi e esta sendo uma ótima vivência e experiência, quero continuar assim até o fim 😁
             </p>
         </div>
 
         <div class="evento">
             <h3>🏡 Nosso futuro</h3>
             <p>
-                Ainda temos muitos sonhos para realizar.
+                Ainda temos muitos sonhos para realizar, estamos com 3 anos apenas, de uma vida toda meu bem 😜
             </p>
         </div>
 
@@ -465,7 +470,7 @@ onclick="proximaSecao()">
 
 <script>
 
-// ALTERE PARA A DATA DE VOCÊS
+// DATA DE INICIO
 
 const inicio =
 new Date("2023-04-14");
@@ -503,7 +508,7 @@ function proximaSecao(){
     });
 
 }
-*/
+
 //botão de sessão
 const secoes = document.querySelectorAll("section[id]");
 let atual = 0;
@@ -516,6 +521,91 @@ function proximaSecao() {
     behavior: "smooth"
   });
 }
+
+const secoes = document.querySelectorAll("section[id]");
+let atual = 0;
+
+function controlarScroll() {
+
+    if (atual <= 3) { // s1 até s4
+        document.body.style.overflow = "hidden";
+    } else {
+        document.body.style.overflow = "auto";
+    }
+
+}
+
+function proximaSecao() {
+
+    atual = (atual + 1) % secoes.length;
+
+    controlarScroll();
+
+    secoes[atual].scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+*/
+
+//Botao proximo e começar
+const secoes = document.querySelectorAll("section[id]");
+let atual = 0;
+
+function proximaSecao() {
+
+  atual = (atual + 1) % secoes.length;
+
+  secoes[atual].scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+function irPara(indice){
+
+    atual = indice;
+
+    controlarScroll();
+
+    secoes[atual].scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+//botao infinito
+function proximaSecao(){
+
+    atual = (atual + 1) % secoes.length;
+
+    controlarScroll();
+
+    secoes[atual].scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+//controle scroll
+function controlarScroll() {
+
+    const nextBtn =
+        document.getElementById("nextBtn");
+
+    if (atual <= 2) {
+
+        document.body.style.overflow = "hidden";
+
+        nextBtn.style.display = "none";
+
+    } else {
+
+        document.body.style.overflow = "auto";
+
+        nextBtn.style.display = "block";
+
+    }
+
+}
+
 
 // CORAÇÕES
 
@@ -551,6 +641,5 @@ setInterval(
 );
 
 </script>
-
 </body>
 </html>
